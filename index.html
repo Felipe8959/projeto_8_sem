@@ -3,20 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora</title>
+  <title>KM-MX - Para motoristas</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="images/kmcheck2.png" type="image/png">
+
 </head>
 
 <body>
   <!-- CABEÇALHO -->
-  <header>
-    <img src="images/car.png" alt="Descrição da imagem", class="header-image">
-    <h1></h1>
+  <header id='mainHeader' class="hidden">
+    <img src="images/kmcheck2.png" alt="Carro" class="header-image" onclick="goHome()">
   </header>
 
-  <!-- CALCULADORA -->
-  <section id="calculator">
-    <h2>Calculadora de Custos</h2>
+  <!-- NAV BAR -->
+  <nav id="topNav" class="top-nav hidden">
+    <button onclick="selectOption('calcAluguel')">Alugado</button>
+    <button onclick="selectOption('calcFinanciado')">Financiado</button>
+    <button onclick="selectOption('calcQuitado')">Quitado</button>
+    <button onclick="selectOption('calcViagem')">Viagem</button>
+    <!-- <button onclick="goHome()">Início</button> -->
+  </nav>
+
+  <!-- TELA DE SELEÇÃO -->
+  <section id="selection">
+    <img src="images/kmcheck1.png" alt="Carro" class="header-image2">
+    <h2>Selecione uma opção para calcular seus KM:</h2>
+
+    <div class="options">
+      <div class="option" onclick="selectOption('calcAluguel')">
+        <i class="fas fa-car-side icon"></i><br>
+        Carro<br>Alugado
+      </div>
+      <div class="option" onclick="selectOption('calcFinanciado')">
+        <i class="fas fa-dollar-sign icon"></i><br>
+        Carro<br>Financiado
+      </div>
+      <div class="option" onclick="selectOption('calcQuitado')">
+        <i class="fas fa-car icon"></i><br>
+        Carro<br>Quitado
+      </div>
+      <div class="option" onclick="selectOption('calcViagem')">
+        <i class="fas fa-road icon"></i><br>
+        KM para<br>Viagem
+      </div>
+    </div>
+  </section>
+
+  <!-- ALUGADO -->
+  <section id="calcAluguel" class="calculator calc hidden">
+    <h2>Carro Alugado</h2>
 
     <div class="form-group">
       <div>
@@ -32,8 +68,16 @@
         <input type="number" id="consumo" placeholder="Ex.: 12" step="0.1">
       </div>
       <div>
-        <label for="aluguelDiario">Aluguel Diário (R$/dia)</label>
-        <input type="number" id="aluguelDiario" placeholder="Ex.: 120">
+        <label for="periodoAluguel">Período do Aluguel</label>
+        <select id="periodoAluguel">
+          <option value="dia">Diário</option>
+          <option value="semana">Semanal</option>
+          <option value="mes">Mensal</option>
+        </select>
+      </div>
+      <div>
+        <label for="valorAluguel">Valor do Aluguel (R$)</label>
+        <input type="number" id="valorAluguel" placeholder="Ex.: 120">
       </div>
       <div>
         <label for="dias">Dias de Aluguel</label>
@@ -43,18 +87,162 @@
         <label for="taxaUber">Tarifa Uber/99 (R$/km)</label>
         <input type="number" id="taxaUber" placeholder="Ex.: 2.30" step="0.01">
       </div>
+      <div>
+        <label for="lucroAluguel">Valor desejado de lucro (R$)</label>
+        <input type="number" id="lucroAluguel" placeholder="Ex.: 2000">
+      </div>
     </div>
 
-    <button onclick="calculate()" id="btn_calc">Calcular</button>
+    <button onclick="calculateAluguel()" class="btn_calc">Calcular</button>
 
-    <div id="results" class="hidden">
+    <div id="resultsAluguel" class="results hidden">
       <h3>Resultados:</h3>
       <p id="custoGasolina"></p>
       <p id="custoAluguel"></p>
       <p id="custoTotalCarro"></p>
       <p id="custoUber"></p>
+      <p id="tarifaMinAluguel"></p>
+      <a id="waAluguel" class="btn_wa" target="_blank">Enviar via WhatsApp</a>
     </div>
   </section>
+
+  <!-- FINANCIADO -->
+  <section id="calcFinanciado" class="calculator calc hidden">
+    <h2>Carro Financiado</h2>
+
+    <div class="form-group">
+      <div>
+        <label for="distanciaFin">Distância (km)</label>
+        <input type="number" id="distanciaFin" placeholder="Ex.: 350">
+      </div>
+      <div>
+        <label for="precoGasolinaFin">Preço da Gasolina (R$/L)</label>
+        <input type="number" id="precoGasolinaFin" placeholder="Ex.: 5.80" step="0.01">
+      </div>
+      <div>
+        <label for="consumoFin">Consumo do Carro (km/L)</label>
+        <input type="number" id="consumoFin" placeholder="Ex.: 12" step="0.1">
+      </div>
+      <div>
+        <label for="parcelaMensal">Parcela Mensal (R$)</label>
+        <input type="number" id="parcelaMensal" placeholder="Ex.: 1500">
+      </div>
+      <div>
+        <label for="kmMes">Quilometragem Mensal (km)</label>
+        <input type="number" id="kmMes" placeholder="Ex.: 1200">
+      </div>
+      <div>
+        <label for="lucroFin">Valor desejado de lucro (R$)</label>
+        <input type="number" id="lucroFin" placeholder="Ex.: 2000">
+      </div>
+
+    </div>
+
+    <button onclick="calculateFinanciado()" class="btn_calc">Calcular</button>
+
+    <div id="resultsFin" class="results hidden">
+      <h3>Resultados:</h3>
+      <p id="custoGasolinaFin"></p>
+      <p id="custoParcela"></p>
+      <p id="custoTotalFin"></p>
+      <p id="tarifaMinFin"></p>
+      <a id="waFin" class="btn_wa" target="_blank">Enviar via WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- QUITADO -->
+  <section id="calcQuitado" class="calculator calc hidden">
+    <h2>Carro Quitado</h2>
+
+    <div class="form-group">
+      <div>
+        <label for="distanciaQuit">Distância (km)</label>
+        <input type="number" id="distanciaQuit" placeholder="Ex.: 350">
+      </div>
+      <div>
+        <label for="precoGasolinaQuit">Preço da Gasolina (R$/L)</label>
+        <input type="number" id="precoGasolinaQuit" placeholder="Ex.: 5.80" step="0.01">
+      </div>
+      <div>
+        <label for="consumoQuit">Consumo do Carro (km/L)</label>
+        <input type="number" id="consumoQuit" placeholder="Ex.: 12" step="0.1">
+      </div>
+      <div>
+        <label for="manutencaoKm">Manutenção (R$/km)</label>
+        <input type="number" id="manutencaoKm" placeholder="Ex.: 0.35" step="0.01">
+      </div>
+      <div>
+        <label for="lucroQuit">Valor desejado de lucro (R$)</label>
+        <input type="number" id="lucroQuit" placeholder="Ex.: 2000">
+      </div>
+    </div>
+
+    <button onclick="calculateQuitado()" class="btn_calc">Calcular</button>
+
+    <div id="resultsQuit" class="results hidden">
+      <h3>Resultados:</h3>
+      <p id="custoGasolinaQuit"></p>
+      <p id="custoManutencao"></p>
+      <p id="custoTotalQuit"></p>
+      <p id="tarifaMinQuit"></p>
+      <a id="waQuit" class="btn_wa" target="_blank">Enviar via WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- VIAGEM -->
+  <section id="calcViagem" class="calculator calc hidden">
+    <h2>Viagem de Carro</h2>
+
+    <div class="form-group">
+      <div>
+        <label for="distanciaVia">Distância (km)</label>
+        <input type="number" id="distanciaVia" placeholder="Ex.: 800">
+      </div>
+      <div>
+        <label for="precoGasolinaVia">Preço da Gasolina (R$/L)</label>
+        <input type="number" id="precoGasolinaVia" placeholder="Ex.: 5.80" step="0.01">
+      </div>
+      <div>
+        <label for="consumoVia">Consumo do Carro (km/L)</label>
+        <input type="number" id="consumoVia" placeholder="Ex.: 12" step="0.1">
+      </div>
+      <div>
+        <label for="pedagios">Pedágios Totais (R$)</label>
+        <input type="number" id="pedagios" placeholder="Ex.: 120">
+      </div>
+      <div>
+        <label for="outrosCustos">Outros Custos (R$)</label>
+        <input type="number" id="outrosCustos" placeholder="Ex.: 80">
+      </div>
+      <div>
+        <label for="lucroVia">Valor desejado de lucro (R$)</label>
+        <input type="number" id="lucroVia" placeholder="Ex.: 500">
+      </div>
+    </div>
+
+    <button onclick="calculateViagem()" class="btn_calc">Calcular</button>
+
+    <div id="resultsVia" class="results hidden">
+      <h3>Resultados:</h3>
+      <p id="custoGasolinaVia"></p>
+      <p id="custoExtras"></p>
+      <p id="custoTotalVia"></p>
+      <p id="tarifaMinVia"></p>
+      <a id="waVia" class="btn_wa" target="_blank">Enviar via WhatsApp</a>
+    </div>
+  </section>
+
+<div class="social-icons">
+  <a href="https://www.uber.com" target="_blank" class="app-link" aria-label="Uber">
+    <i class="fa-brands fa-uber"></i>
+  </a>
+  <a href="https://99app.com" target="_blank" class="app-link app-img" aria-label="99">
+    <img src="images/99.png" alt="99">
+  </a>
+  <a href="https://www.waze.com/ul" target="_blank" class="app-link" aria-label="Waze">
+    <i class="fa-brands fa-waze"></i>
+  </a>
+</div>
 
   <script src="scripts.js"></script>
 </body>
