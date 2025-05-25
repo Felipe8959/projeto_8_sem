@@ -25,34 +25,38 @@ function goHome(){
 
 /* CARRO ALUGADO */
 function calculateAluguel(){
-    const distancia     = parseFloat(document.getElementById('distancia').value)    || 0;
-    const precoGasolina = parseFloat(document.getElementById('precoGasolina').value)|| 0;
+    const kmRodados     = parseFloat(document.getElementById('kmRodados').value)    || 0;
+    const precoCombustivel = parseFloat(document.getElementById('precoCombustivel').value)|| 0;
     const consumo       = parseFloat(document.getElementById('consumo').value)     || 1;
     const valorAluguel  = parseFloat(document.getElementById('valorAluguel').value)|| 0;
-    const periodo       = document.getElementById('periodoAluguel').value;
-    const dias          = parseInt(document.getElementById('dias').value)          || 0;
-    const taxaUber      = parseFloat(document.getElementById('taxaUber').value)    || 0;
+    // const periodo       = document.getElementById('periodoAluguel').value;
+    // const dias          = parseInt(document.getElementById('dias').value)          || 0;
+    // const taxaUber      = parseFloat(document.getElementById('taxaUber').value)    || 0;
     const lucroDesejado = parseFloat(document.getElementById('lucroAluguel').value)|| 0;
 
     // converte valor para diário
-    let valorDiario = valorAluguel;
-    if (periodo === 'semana') valorDiario /= 7;
-    if (periodo === 'mes')    valorDiario /= 30;
+    // let valorDiario = valorAluguel;
+    // if (periodo === 'semana') valorDiario /= 7;
+    // if (periodo === 'mes')    valorDiario /= 30;
 
-    const litrosNec  = distancia / consumo;
-    const custoGas   = litrosNec * precoGasolina;
-    const custoAlug  = valorDiario * dias;
-    const custoTotal = custoGas + custoAlug;
-    const custoUber  = distancia * taxaUber;
+    /*trecho tipo combustivel*/
+    
+    
+
+    const litrosNec  = kmRodados / consumo;
+    const custoGas   = litrosNec * precoCombustivel;
+    // const custoAlug  = valorDiario * dias;
+    const custoTotal = custoGas + valorAluguel;
+    // const custoUber  = kmRodados * taxaUber;
 
     // --- tarifa mínima p/ alcançar lucro ---
-    const kmMes = dias ? (distancia / dias) * 30 : distancia;
+    const kmMes = kmRodados;
     const tarifaMin = (custoTotal + lucroDesejado) / kmMes;
 
-    document.getElementById('custoGasolina').textContent   = `Combustível: R$ ${custoGas.toFixed(2)}`;
-    document.getElementById('custoAluguel').textContent    = `Aluguel: R$ ${custoAlug.toFixed(2)}`;
+    document.getElementById('custoCombustivel').textContent   = `Combustível: R$ ${custoGas.toFixed(2)}`;
+    document.getElementById('valorAluguel').textContent    = `Aluguel: R$ ${valorAluguel.toFixed(2)}`;
     document.getElementById('custoTotalCarro').textContent = `Total Carro + Aluguel: R$ ${custoTotal.toFixed(2)}`;
-    document.getElementById('custoUber').textContent       = `Uber/99: R$ ${custoUber.toFixed(2)}`;
+    // document.getElementById('custoUber').textContent       = `Uber/99: R$ ${custoUber.toFixed(2)}`;
     document.getElementById('tarifaMinAluguel').textContent =
     `Rodando: ${kmMes.toFixed(0)} km/mês, você deve aceitar viagens com tarifa mínima de R$ ${tarifaMin.toFixed(2)} por km!`;
 
@@ -70,16 +74,18 @@ function calculateAluguel(){
 
 /* CARRO FINANCIADO */
 function calculateFinanciado(){
-    const distancia     = parseFloat(document.getElementById('distanciaFin').value)      || 0;
-    const precoGasolina = parseFloat(document.getElementById('precoGasolinaFin').value)  || 0;
+    const kmRodados     = parseFloat(document.getElementById('distanciaFin').value)      || 0;
+    const precoCombustivel = parseFloat(document.getElementById('precoCombustivelFin').value)  || 0;
     const consumo       = parseFloat(document.getElementById('consumoFin').value)        || 1;
     const parcelaMensal = parseFloat(document.getElementById('parcelaMensal').value)     || 0;
     const kmMes         = parseFloat(document.getElementById('kmMes').value)             || 1;
     const lucroDesejado = parseFloat(document.getElementById('lucroFin').value)||0;
+    const manutPrev     = parseFloat(document.getElementById('manutPrev').value)       || 0;
 
-    const litrosNec   = distancia/consumo;
-    const custoGas    = litrosNec*precoGasolina;
-    const custoParc   = parcelaMensal*(distancia/kmMes);
+
+    const litrosNec   = kmRodados/consumo;
+    const custoGas    = litrosNec*precoCombustivel;
+    const custoParc   = parcelaMensal*(kmRodados/kmMes);
     const custoTotal  = custoGas+custoParc;
     const tarifaMin = (custoTotal + lucroDesejado) / kmMes;
 
@@ -103,29 +109,32 @@ function calculateFinanciado(){
 
 /* CARRO QUITADO*/
 function calculateQuitado(){
-    const distancia     = parseFloat(document.getElementById('distanciaQuit').value)      || 0;
-    const precoGasolina = parseFloat(document.getElementById('precoGasolinaQuit').value)  || 0;
+    const kmRodados     = parseFloat(document.getElementById('distanciaQuit').value)      || 0;
+    const precoCombustivel = parseFloat(document.getElementById('precoCombustivelQuit').value)  || 0;
     const consumo       = parseFloat(document.getElementById('consumoQuit').value)        || 1;
     const manutKm       = parseFloat(document.getElementById('manutencaoKm').value)       || 0;
     const lucroDesejado = parseFloat(document.getElementById('lucroQuit').value)||0;
+    const manutPrev     = parseFloat(document.getElementById('manutPrev').value)       || 0;
 
-    const litrosNec   = distancia/consumo;
-    const custoGas    = litrosNec*precoGasolina;
-    const custoManu   = manutKm*distancia;
+    const litrosNec   = kmRodados/consumo;
+    const custoGas    = litrosNec*precoCombustivel;
+    const custoManu   = manutKm*kmRodados;
     const custoTotal  = custoGas+custoManu;
-    const tarifaMin = (custoTotal + lucroDesejado) / distancia;
+    const tarifaMin = (custoTotal + lucroDesejado) / kmRodados;
+    const custoManuPrev = manutPrev*kmRodados
 
     document.getElementById('custoGasolinaQuit').textContent = `Combustível: R$ ${custoGas.toFixed(2)}`;
     document.getElementById('custoManutencao').textContent   = `Manutenção: R$ ${custoManu.toFixed(2)}`;
     document.getElementById('custoTotalQuit').textContent    = `Custo Total: R$ ${custoTotal.toFixed(2)}`;
     document.getElementById('tarifaMinQuit').textContent =
-        `Rodando: ${distancia.toFixed(0)} km/mês, você deve aceitar viagens com tarifa mínima de R$ ${tarifaMin.toFixed(2)} por km!`;
+        `Rodando: ${kmRodados.toFixed(0)} km/mês, você deve aceitar viagens com tarifa mínima de R$ ${tarifaMin.toFixed(2)} por km!`;
 
+        
     const msgQuit = `*Carro Quitado*
     Combustível: R$ ${custoGas.toFixed(2)}
     Manutenção: R$ ${custoManu.toFixed(2)}
     Total: R$ ${custoTotal.toFixed(2)}
-    ${distancia.toFixed(0)} km/mês
+    ${kmRodados.toFixed(0)} km/mês
     Tarifa mínima: R$ ${tarifaMin.toFixed(2)}/km`;
     document.getElementById('waQuit').href =
     'https://wa.me/?text=' + encodeURIComponent(msgQuit);
@@ -135,30 +144,32 @@ function calculateQuitado(){
 
 /*  VIAGEM */
 function calculateViagem(){
-    const distancia     = parseFloat(document.getElementById('distanciaVia').value)      || 0;
-    const precoGasolina = parseFloat(document.getElementById('precoGasolinaVia').value)  || 0;
+    const kmRodados     = parseFloat(document.getElementById('distanciaVia').value)      || 0;
+    const precoCombustivel = parseFloat(document.getElementById('precoCombustivelVia').value)  || 0;
     const consumo       = parseFloat(document.getElementById('consumoVia').value)        || 1;
     const pedagios      = parseFloat(document.getElementById('pedagios').value)          || 0;
     const outrosCustos  = parseFloat(document.getElementById('outrosCustos').value)      || 0;
-    const lucroDesejado = parseFloat(document.getElementById('lucroVia').value)||0;
+    // const lucroDesejado = parseFloat(document.getElementById('lucroVia').value)||0;
 
-    const litrosNec   = distancia/consumo;
-    const custoGas    = litrosNec*precoGasolina;
+
+    const litrosNec   = kmRodados/consumo;
+    const custoGas    = litrosNec*precoCombustivel;
     const custoExtras = pedagios+outrosCustos;
     const custoTotal  = custoGas+custoExtras;
-    const tarifaMin = (custoTotal + lucroDesejado) / distancia;
+    // const tarifaMin = (custoTotal + lucroDesejado) / kmRodados;
 
     document.getElementById('custoGasolinaVia').textContent = `Combustível: R$ ${custoGas.toFixed(2)}`;
     document.getElementById('custoExtras').textContent      = `Extras (Pedágios/Outros): R$ ${custoExtras.toFixed(2)}`;
     document.getElementById('custoTotalVia').textContent    = `Custo Total: R$ ${custoTotal.toFixed(2)}`;
-    document.getElementById('tarifaMinVia').textContent =
-    `Para ${distancia.toFixed(0)} km, você deve aceitar viagens com tarifa mínima de R$ ${tarifaMin.toFixed(2)} por km!`;
+    // document.getElementById('tarifaMinVia').textContent =
+    // `Para ${kmRodados.toFixed(0)} km, você deve aceitar viagens com tarifa mínima de R$ ${tarifaMin.toFixed(2)} por km!`;
 
+    //resultados
     const msgVia = `*Viagem*
     Combustível: R$ ${custoGas.toFixed(2)}
     Extras: R$ ${custoExtras.toFixed(2)}
     Total: R$ ${custoTotal.toFixed(2)}
-    ${distancia.toFixed(0)} km
+    ${kmRodados.toFixed(0)} km
     Tarifa mínima: R$ ${tarifaMin.toFixed(2)}/km`;
     document.getElementById('waVia').href =
     'https://wa.me/?text=' + encodeURIComponent(msgVia);
