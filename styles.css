@@ -65,7 +65,7 @@ header{
   cursor:pointer;
   transition:background .2s,transform .15s;
 }
-.top-nav button:hover{background:#1ca1da;color:#fff}
+.top-nav button:hover{background:#2092d4;color:#fff}
 .top-nav button:active{transform:scale(.96)}
 
 /* tela de seleção */
@@ -91,9 +91,9 @@ header{
   cursor:pointer;
   box-shadow:0 2px 6px rgba(0,0,0,.06);
   transition:background .2s,transform .15s,box-shadow .15s;
-  outline: 2px solid #000;
+  /* outline: 2px solid #000; */
 }
-.option:hover{background:#1ca1da;color:#fff}
+.option:hover{background:#2092d4;color:#fff}
 .option:active{transform:scale(.98)}
 
 
@@ -128,7 +128,7 @@ header{
   opacity: 0.3; /* cinza no hover */
 }
 
-.btn_wa{
+#enviar{
   display:inline-block;
   margin-top:1rem;
   background:#25D366;
@@ -139,7 +139,7 @@ header{
   text-decoration:none;
   transition:background .2s;
 }
-.btn_wa:hover{background:#1DA851;}
+.enviar:hover{background:#1DA851;}
 
 /* calculadoras */
 .calculator{
@@ -160,9 +160,9 @@ header{
 
 select {
   padding: 0.6rem 0.75rem;
-  border: 1px solid #e9e9e9;
+  border: 1px solid #969696;
   border-radius: 12px;
-  background: #fff;
+  background: #94949428;
   font-size: 1rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -183,9 +183,9 @@ select:focus {
 label{margin-bottom:.35rem;font-weight:500}
 input[type="number"]{
   padding:.6rem .75rem;
-  border:1px solid #e9e9e9;
+  border:1px solid #969696;
   border-radius:12px;
-  background:#00000028;
+  background:#94949428;
   font-size:1rem;
   transition:border-color .2s,box-shadow .2s;
 }
@@ -202,17 +202,17 @@ input[type="number"]:focus{
   max-width:240px;
   margin-left:auto;
   margin-right:auto;
-  background: #acacac;
-  color:#000000;
+  background: #2092d4;
+  color:#ffffff;
   border:none;
   padding:.75rem 1.5rem;
   font-size:1rem;
-  font-weight:500;
+  font-weight:550;
   border-radius:12px;
   cursor:pointer;
   transition:background .2s,transform .15s,box-shadow .15s;
 }
-.btn_calc:hover{background:#1ca1da;color:#fff}
+.btn_calc:hover{background:#2092d4;color:#fff}
 .btn_calc:active{transform:scale(.98);box-shadow:inset 0 2px 6px rgba(0,0,0,.06)}
 
 /* resultados */
