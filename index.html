@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="images/kmcheck2.png" type="image/png">
-
+  <meta name="format-detection" content="telephone=no">
 </head>
 
 <body>
@@ -21,8 +21,6 @@
     <button onclick="selectOption('calcAluguel')">Alugado</button>
     <button onclick="selectOption('calcFinanciado')">Financiado</button>
     <button onclick="selectOption('calcQuitado')">Quitado</button>
-    <button onclick="selectOption('calcViagem')">Viagem</button>
-    <!-- <button onclick="goHome()">Início</button> -->
   </nav>
 
   <!-- TELA DE SELEÇÃO -->
@@ -81,26 +79,10 @@
         <label for="consumo">Consumo do Veículo (km/L)</label>
         <input type="text" id="consumo" placeholder="Litros" step="0.1">
       </div>
-      <!-- <div>
-        <label for="distancia">Distância (km)</label>
-        <input type="text" id="distancia" placeholder="Km">
-      </div> -->
-      <!-- <div>
-        <label for="periodoAluguel">Período do Aluguel</label>
-        <select id="periodoAluguel">
-          <option value="dia">Diário</option>
-          <option value="semana">Semanal</option>
-          <option value="mes">Mensal</option>
-        </select>
-      </div> -->
       <div>
         <label for="dias">Dias Trabalhados</label>
         <input type="text" id="diasTrabalhados" placeholder="Dias">
       </div>
-      <!-- <div>
-        <label for="taxaUber">Tarifa Uber/99 (R$/km)</label>
-        <input type="text" id="taxaUber" placeholder="R$" step="0.01">
-      </div> -->
       <div> 
         <label for="lucroAluguel">Valor desejado de lucro (R$)</label>
         <input type="text" id="lucroAluguel" placeholder="R$" oninput="formatarMoeda(this)">
@@ -115,9 +97,7 @@
       <p id="tipoCombustAlug"></p>
       <p id="valorAluguel"></p>
       <p id="custoTotalCarro"></p>
-      <!-- <p id="custoUber"></p> -->
       <p id="tarifaMinAluguel"></p>
-      <!-- <a id="waAluguel" class="btn_wa" target="_blank">Enviar via WhatsApp</a> -->
       <div id="resultado"></div>
       <button id="enviar" onclick="enviarResultado()">📲 Enviar via WhatsApp</button>
       <button id="fechar" onclick="fecharResultado()">❌ Fechar / Recalcular</button>
@@ -221,7 +201,6 @@
       <h3>Resultados:</h3>
       <p id="custoCombustivelQuit"></p>
       <p id="tipoCombustQuit"></p>
-      <!-- <p id="custoManutencao"></p> -->
       <p id="custoTotalQuit"></p>
       <p id="tarifaMinQuit"></p>
       <a id="waQuit" class="btn_wa" target="_blank">Enviar via WhatsApp</a>
@@ -268,7 +247,6 @@
       <h3>Resultados:</h3>
       <p id="custoCombustivelVia"></p>
       <p id="tipoCombustVia"></p>
-      <!-- <p id="custoExtras"></p> -->
       <p id="custoTotalVia"></p>
       <a id="waVia" class="btn_wa" target="_blank">Enviar via WhatsApp</a>
     </div>

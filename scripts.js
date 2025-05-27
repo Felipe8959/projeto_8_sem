@@ -23,8 +23,6 @@ function goHome(){
   document.getElementById('mainHeader').classList.add('hidden');
 }
 
-
-
 /* CARRO ALUGADO */
 function formatarMoeda(campo) {
     let valor = campo.value.replace(/\D/g, ""); // Remove tudo que não for número
