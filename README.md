@@ -1,6 +1,6 @@
-# KM-MX – Calculadora de Quilometragem para Motoristas
+# KMCheck – Calculadora de Quilometragem para Motoristas
 
-**KM-MX** é uma aplicação web que ajuda motoristas de aplicativos ou particulares a descobrir rapidamente o custo por quilômetro e a tarifa mínima que precisam cobrar para atingir uma meta de lucro em quatro cenários diferentes (aluguel, financiamento, carro quitado e viagens). A ferramenta também gera um resumo formatado e pronto para ser compartilhado no WhatsApp.
+**KMCheck** é uma aplicação web que ajuda motoristas de aplicativos ou particulares a descobrir rapidamente o custo por quilômetro e a tarifa mínima que precisam cobrar para atingir uma meta de lucro em quatro cenários diferentes (aluguel, financiamento, carro quitado e viagens). A ferramenta também gera um resumo formatado e pronto para ser compartilhado no WhatsApp.
 
 ---
 
@@ -30,7 +30,6 @@
 ## 📁 Estrutura do Projeto
 
 ```text
-km-mx/
 ├── index.html      # Estrutura e navegação principais
 ├── styles.css      # Estilos, responsividade, animações
 ├── scripts.js      # Lógica dos cálculos, formatação e interações
