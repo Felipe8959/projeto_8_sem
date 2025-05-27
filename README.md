@@ -7,7 +7,6 @@ Este é um projeto de uma **Calculadora de Custos** desenvolvida em HTML, CSS e 
 - **Cálculo de custos com gasolina**: Baseado na distância, preço da gasolina e consumo do carro.
 - **Cálculo de custos com aluguel de carro**: Considerando o valor diário do aluguel e o número de dias.
 - **Cálculo de custos com aplicativos de transporte**: Baseado na tarifa por quilômetro.
-- Exibição dos resultados de forma clara e organizada.
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -18,16 +17,13 @@ Este é um projeto de uma **Calculadora de Custos** desenvolvida em HTML, CSS e 
 ## 📐 Fórmulas Utilizadas
 
 1. **Custo com Gasolina**  
-   `Custo Gasolina = (Distância em km / Consumo em km/L) × Preço da Gasolina (R$/L)`
+   `Custo Gasolina = (Distância em km / Consumo em km/L) × Preço do combustível (R$/L)`
 
-2. **Custo com Aluguel de Carro**  
-   `Custo Aluguel = Aluguel Diário (R$/dia) × Dias de Aluguel`
+2. **Custos de Aluguel/Financiamento**  
+   `Custo Aluguel/Financiamento = Aluguel/Financiamento Mensal (R$)`
 
 3. **Custo Total com Carro**  
-   `Custo Total Carro = Custo Gasolina + Custo Aluguel`
-
-4. **Custo com Aplicativos de Transporte (Uber/99)**  
-   `Custo Uber = Distância em km × Tarifa Uber/99 (R$/km)`
+   `Custo Total Carro = Custo Gasolina + Custo Aluguel/Financiamento`
 
 ## 📂 Estrutura do Projeto
 
