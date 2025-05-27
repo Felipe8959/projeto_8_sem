@@ -128,18 +128,20 @@ header{
   opacity: 0.3; /* cinza no hover */
 }
 
-#enviar{
+.btn_wa{
   display:inline-block;
   margin-top:1rem;
   background:#25D366;
+  border:none;
   color:#fff;
   padding:.6rem 1.1rem;
   border-radius:8px;
-  font-weight:600;
+  font-weight:400;
   text-decoration:none;
   transition:background .2s;
+  cursor:pointer;
 }
-.enviar:hover{background:#1DA851;}
+.btn_wa:hover{background:#1DA851;}
 
 /* calculadoras */
 .calculator{
@@ -160,7 +162,7 @@ header{
 
 select {
   padding: 0.6rem 0.75rem;
-  border: 1px solid #969696;
+  border: 1px solid #b6b6b6;
   border-radius: 12px;
   background: #94949428;
   font-size: 1rem;
@@ -181,9 +183,9 @@ select:focus {
 }
 .form-group div{display:flex;flex-direction:column}
 label{margin-bottom:.35rem;font-weight:500}
-input[type="number"]{
+input[type="text"]{
   padding:.6rem .75rem;
-  border:1px solid #969696;
+  border:1px solid #b6b6b6;
   border-radius:12px;
   background:#94949428;
   font-size:1rem;
@@ -212,12 +214,13 @@ input[type="number"]:focus{
   cursor:pointer;
   transition:background .2s,transform .15s,box-shadow .15s;
 }
-.btn_calc:hover{background:#2092d4;color:#fff}
+.btn_calc:hover{background:#2092d4c9;color:#fff}
 .btn_calc:active{transform:scale(.98);box-shadow:inset 0 2px 6px rgba(0,0,0,.06)}
 
 /* resultados */
 .results{
   margin-top:2rem;
+  position: relative;
   padding:1.25rem 1.5rem;
   background:#f0f4ff;
   border-left:4px solid #606060;
@@ -227,6 +230,17 @@ input[type="number"]:focus{
 }
 .results h3{margin-bottom:.75rem;font-size:1.125rem}
 .results p{font-weight:500;margin-bottom:.25rem}
+
+.btn_close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:none;
+  border:none;
+  font-size:1.2rem;
+  line-height:1;
+  cursor:pointer;
+}
 
 /* utilidades */
 .hidden{display:none}

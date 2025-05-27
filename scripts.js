@@ -23,6 +23,8 @@ function goHome(){
   document.getElementById('mainHeader').classList.add('hidden');
 }
 
+
+
 /* CARRO ALUGADO */
 function formatarMoeda(campo) {
     let valor = campo.value.replace(/\D/g, ""); // Remove tudo que não for número
@@ -43,6 +45,15 @@ function calculateAluguel() {
     let consumo = formatarNumero(document.getElementById('consumo').value);
     let lucroDesejado = formatarNumero(document.getElementById('lucroAluguel').value);
     let diasTrabalhados = formatarNumero(document.getElementById('diasTrabalhados').value);
+
+    if (
+      isNaN(aluguel) || isNaN(kmRodado) || tipoCombustivel === "" ||
+      isNaN(precoCombustivel) || isNaN(consumo) ||
+      isNaN(lucroDesejado) || isNaN(diasTrabalhados) || consumo === 0 || diasTrabalhados === 0
+    ) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
     
     let custoCombustivel = (kmRodado / consumo) * precoCombustivel;
     let custoTotal = aluguel + custoCombustivel;
@@ -50,7 +61,7 @@ function calculateAluguel() {
     let precoPorKm = receitaNecessaria / kmRodado;
     let metaDiaria = (kmRodado / diasTrabalhados) * precoPorKm
     
-    msgVia = document.getElementById('resultsAluguel').innerHTML = `
+    document.getElementById('resultsAluguel').innerHTML = `
         <h3>Resultados:</h3>
         <div class="card">⛽ Tipo de combustível: <span class="resultado-valor">${tipoCombustivel}</span></div>
         <div class="card">⛽ Combustivel total mensal: <span class="resultado-valor">R$ ${custoCombustivel.toFixed(2)}</span></div>
@@ -58,7 +69,14 @@ function calculateAluguel() {
         <div class="card">📈 Sua meta de LUCRO do mês é: <span class="resultado-valor">R$ ${lucroDesejado.toFixed(2)}</span></div>
         <div class="card">🔰 Rodando: <span class="resultado-valor">${kmRodado}</span> km por mês, você deve aceitar corridas com tarifa mínima de: <span class="resultado-valor">R$ ${precoPorKm.toFixed(2)}</span> por quilômetro!</div>
         <div class="card">🏁 Sua meta diária: <span class="resultado-valor">${metaDiaria.toFixed(2)}</span></div>
+        <button class="btn_wa"
+                onclick="enviarWhatsApp('resultsAluguel')">
+          📲 Enviar via WhatsApp
+        </button>
+        <button class="btn_close"
+                onclick="fecharResultados('resultsAluguel')">❌</button>
     `;
+
     document.getElementById('resultsAluguel').style.display = 'block';
 }
 
@@ -71,7 +89,16 @@ function calculateFinanc() {
     let consumo = formatarNumero(document.getElementById('consumoFinanc').value);
     let lucroDesejado = formatarNumero(document.getElementById('lucroFinanc').value);
     let diasTrabalhados = formatarNumero(document.getElementById('diasTrabalhadosFinan').value);
-    
+
+    if (
+      isNaN(financ) || isNaN(kmRodado) || tipoCombustivel === "" ||
+      isNaN(precoCombustivel) || isNaN(consumo) ||
+      isNaN(lucroDesejado) || isNaN(diasTrabalhados) || consumo === 0 || diasTrabalhados === 0
+    ) {
+      alert("Por favor, preencha todos os campos corretamente.");
+      return;
+    }
+
     let custoCombustivel = (kmRodado / consumo) * precoCombustivel;
     let custoTotal = financ + custoCombustivel;
     let receitaNecessaria = custoTotal + lucroDesejado;
@@ -86,15 +113,14 @@ function calculateFinanc() {
         <div class="card">📈 Sua meta de LUCRO do mês é: <span class="resultado-valor">R$ ${lucroDesejado.toFixed(2)}</span></div>
         <div class="card">🔰 Rodando: <span class="resultado-valor">${kmRodado}</span> km por mês, você deve aceitar corridas com tarifa mínima de: <span class="resultado-valor">R$ ${precoPorKm.toFixed(2)}</span> por quilômetro!</div>
         <div class="card">🏁 Sua meta diária: <span class="resultado-valor">${metaDiaria.toFixed(2)}</span></div>
+        <button class="btn_wa"
+                onclick="enviarWhatsApp('resultsFinanc')">
+          📲 Enviar via WhatsApp
+        </button>
+        <button class="btn_close"
+                onclick="fecharResultados('resultsFinanc')">❌</button>
     `;
-    //resultados
-    const msgVia = `*Aluguel*
-    Combustível: R$ ${custoCombustivel.toFixed(2)}
-    Total: R$ ${custoTotal.toFixed(2)}
-    ${kmRodado.toFixed(0)} km`;
 
-    document.getElementById('waVia').href =
-    'https://wa.me/?text=' + encodeURIComponent(msgVia);
     document.getElementById('resultsFinanc').style.display = 'block';
 }
 
@@ -106,7 +132,12 @@ function calculateQuitado(){
     let consumo = formatarNumero(document.getElementById('consumoQuit').value);
     let lucroDesejado = formatarNumero(document.getElementById('lucroQuit').value);
     let diasTrabalhados = formatarNumero(document.getElementById('diasTrabalhadosQuit').value);
-    
+
+    if (isNaN(kmRodado) || !tipoCombustivel || isNaN(precoCombustivel) || isNaN(consumo) || isNaN(diasTrabalhados) || isNaN(lucroDesejado)) {
+      alert("Preencha todos os campos.");
+      return;
+    }
+
     let custoCombustivel = (kmRodado / consumo) * precoCombustivel;
     let custoTotal = custoCombustivel;
     let receitaNecessaria = custoTotal + lucroDesejado;
@@ -121,7 +152,12 @@ function calculateQuitado(){
         <div class="card">📈 Sua meta de LUCRO do mês é: <span class="resultado-valor">R$ ${lucroDesejado.toFixed(2)}</span></div>
         <div class="card">🔰 Rodando: <span class="resultado-valor">${kmRodado}</span> km por mês, você deve aceitar corridas com tarifa mínima de: <span class="resultado-valor">R$ ${precoPorKm.toFixed(2)}</span> por quilômetro!</div>
         <div class="card">🏁 Sua meta diária: <span class="resultado-valor">${metaDiaria.toFixed(2)}</span></div>
-
+        <button class="btn_wa"
+                onclick="enviarWhatsApp('resultsQuit')">
+          📲 Enviar via WhatsApp
+        </button>
+        <button class="btn_close"
+                onclick="fecharResultados('resultsQuit')">❌</button>
     `;
     document.getElementById('resultsQuit').style.display = 'block';
 }
@@ -133,15 +169,13 @@ function calcularCustoViagem(distanciaKm, consumoKmPorLitro, precoCombustivel, t
 }
 
 function calcular() {
-  const distancia = parseFloat(document.getElementById("kmRodadosVia").value);
-  const consumo = parseFloat(document.getElementById("consumoVia").value);
-  const preco = parseFloat(document.getElementById("precoCombustivelVia").value);
+  const distancia = formatarNumero(document.getElementById("kmRodadosVia").value);
+  const consumo = formatarNumero(document.getElementById("consumoVia").value);
+  const preco = formatarNumero(document.getElementById("precoCombustivelVia").value);
   const tipoCombustivel = document.getElementById('tipoCombustivelVia').value;
-  const tarifas = parseFloat(document.getElementById('tarifasVia').value);
+  const tarifas = formatarNumero(document.getElementById('tarifasVia').value);
 
-  console.log(tarifas)
-
-  if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) || consumo === 0 || isNaN(tarifas)) {
+  if (isNaN(distancia) || isNaN(consumo) || isNaN(preco) || !tipoCombustivel || isNaN(tarifas)) {
     alert("Preencha todos os campos corretamente.");
     return;
   }
@@ -156,33 +190,36 @@ function calcular() {
       <div class="card">⛽ Combustivel total mensal: <span class="resultado-valor">R$ ${custoCombustivel.toFixed(2)}</span></div>
       <div class="card">💸 Gasto com pedágios: <span class="resultado-valor">R$ ${tarifas.toFixed(2)}</span></div>
       <div class="card">💸 Gasto total: <span class="resultado-valor">R$ ${resultado.toFixed(2)}</span></div>
+      <button class="btn_wa"
+              onclick="enviarWhatsApp('resultsVia')">
+        📲 Enviar via WhatsApp
+      </button>
+      <button class="btn_close"
+              onclick="fecharResultados('resultsVia')">❌</button>
   `;
   document.getElementById('resultsVia').style.display = 'block';
 }
 
-function enviarResultado() {
-    let tipoCombustivel = document.querySelector(".card:nth-child(1) .resultado-valor").innerText;
-    let combustivelMensal = document.querySelector(".card:nth-child(2) .resultado-valor").innerText;
-    let gastoTotalMensal = document.querySelector(".card:nth-child(3) .resultado-valor").innerText;
-    let lucroDesejado = document.querySelector(".card:nth-child(4) .resultado-valor").innerText;
-    let kmRodado = document.querySelector(".card:nth-child(5) .resultado-valor").innerText;
-    let precoPorKm = document.querySelector(".card:nth-child(5) .resultado-valor:last-child").innerText;
-    let meta = document.querySelector(".card:nth-child(6) .resultado-valor:last-child").innerText;
-    
-    let mensagem = `>📲 *Resultado do Cálculo:* \n\n` +
-                   `⛽ Tipo de combustível: *${tipoCombustivel}*\n` +
-                   `⛽ Combustível mensal: *${combustivelMensal}*\n` +
-                   `💸 Gasto total mensal: *${gastoTotalMensal}*\n` +
-                   `📈 Lucro desejado: *${lucroDesejado}*\n` +
-                   `📍 Km rodados: *${kmRodado}*\n` +
-                   `📍 Meta Diaria: *${meta}*\n` +
-                   `>💰 Aceitar corridas com tarifa mínima de: *${precoPorKm}* ✅ por quilômetro!\n\n\n`+
-                   `Ⓜ️ Calculo feito por KM-MX`;
-    
-    let url = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
-        window.open(url, '_blank');
+function enviarWhatsApp(containerId) {
+  const container = document.getElementById(containerId);
+
+  const cards = container.querySelectorAll('.card');
+  let texto = '*Resultados:*\n';
+  
+
+  cards.forEach(card => {
+    const linha = card.innerText
+      .trim()
+      .replace(/[\u231A-\uFE0F\u2600-\u27BF\uD83C-\uDBFF\uDC00-\uDFFF]+/g, '- '); // substitui emoji por '- '
+    texto += linha + '\n';
+  });
+
+  window.open(
+    `https://wa.me/?text=${encodeURIComponent(texto.trim())}`,
+    '_blank'
+  );
 }
 
-function fecharResultado() {
-    document.getElementById('resultado-container').style.display = 'none';
+function fecharResultados(containerId){
+  document.getElementById(containerId).style.display = 'none';
 }

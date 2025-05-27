@@ -57,11 +57,11 @@
     <div class="form-group">
       <div>
         <label for="valorAluguel">Valor do Aluguel (R$)</label>
-        <input type="number" id="valorAluguel" placeholder="R$">
+        <input type="text" id="valorAluguel" placeholder="R$" oninput="formatarMoeda(this)">
       </div>
       <div>
         <label for="kmRodadosAlug">Quilometros Rodados no Mês</label>
-        <input type="number" id="kmRodadosAlug" placeholder="Km">
+        <input type="text" id="kmRodadosAlug" placeholder="Km">
       </div>
       <div>
         <label for="tipoCombustivelAlug">Tipo de Combustível</label>
@@ -75,15 +75,15 @@
       </div>
       <div>
         <label for="precoCombustivel">Preço do Combustível(R$/L)</label>
-        <input type="number" id="precoCombustivel" placeholder="R$" step="0.01">
+        <input type="text" id="precoCombustivel" placeholder="R$" step="0.01" oninput="formatarMoeda(this)">
       </div>
       <div>
         <label for="consumo">Consumo do Veículo (km/L)</label>
-        <input type="number" id="consumo" placeholder="Litros" step="0.1">
+        <input type="text" id="consumo" placeholder="Litros" step="0.1">
       </div>
       <!-- <div>
         <label for="distancia">Distância (km)</label>
-        <input type="number" id="distancia" placeholder="Km">
+        <input type="text" id="distancia" placeholder="Km">
       </div> -->
       <!-- <div>
         <label for="periodoAluguel">Período do Aluguel</label>
@@ -95,15 +95,15 @@
       </div> -->
       <div>
         <label for="dias">Dias Trabalhados</label>
-        <input type="number" id="diasTrabalhados" placeholder="Dias">
+        <input type="text" id="diasTrabalhados" placeholder="Dias">
       </div>
       <!-- <div>
         <label for="taxaUber">Tarifa Uber/99 (R$/km)</label>
-        <input type="number" id="taxaUber" placeholder="R$" step="0.01">
+        <input type="text" id="taxaUber" placeholder="R$" step="0.01">
       </div> -->
       <div> 
         <label for="lucroAluguel">Valor desejado de lucro (R$)</label>
-        <input type="number" id="lucroAluguel" placeholder="R$">
+        <input type="text" id="lucroAluguel" placeholder="R$" oninput="formatarMoeda(this)">
       </div>
     </div>
 
@@ -129,39 +129,13 @@
     <h2>Carro Financiado</h2>
 
     <div class="form-group">
-      <!-- <div>
-        <label for="distanciaFin">Distância (km)</label>
-        <input type="number" id="distanciaFin" placeholder="Km">
-      </div>
-      <div>
-        <label for="precoGasolinaFin">Preço da Gasolina (R$/L)</label>
-        <input type="number" id="precoGasolinaFin" placeholder="R$" step="0.01">
-      </div>
-      <div>
-        <label for="consumoFin">Consumo do Carro (km/L)</label>
-        <input type="number" id="consumoFin" placeholder="Ex.: 12" step="0.1">
-      </div>
-      <div>
-        <label for="parcelaMensal">Financiamento Mensal (R$)</label>
-        <input type="number" id="parcelaMensal" placeholder="R$">
-      </div>
-      <div>
-        <label for="kmMes">Quilometragem Mensal (km)</label>
-        <input type="number" id="kmMes" placeholder="Ex.: 1200">
-      </div>
-      
-      <div>
-        <label for="manutPrev">Manutenção Preventiva (R$)</label>
-        <input type="number" id="manutPrev" placeholder="R$">
-      </div> -->
-
       <div>
         <label for="valorFinanc">Valor da Parcela (R$)</label>
-        <input type="number" id="valorFinanc" placeholder="R$">
+        <input type="text" id="valorFinanc" placeholder="R$" oninput="formatarMoeda(this)">
       </div>
       <div>
         <label for="kmRodadosFinanc">Quilometros Rodados no Mês</label>
-        <input type="number" id="kmRodadosFinanc" placeholder="Km">
+        <input type="text" id="kmRodadosFinanc" placeholder="Km">
       </div>
       <div>
         <label for="tipoCombustivelFinanc">Tipo de Combustível</label>
@@ -175,19 +149,19 @@
       </div>
       <div>
         <label for="precoCombustivelFinanc">Preço do Combustível(R$/L)</label>
-        <input type="number" id="precoCombustivelFinanc" placeholder="R$" step="0.01">
+        <input type="text" id="precoCombustivelFinanc" placeholder="R$" step="0.01" oninput="formatarMoeda(this)">
       </div>
       <div>
         <label for="consumoFinanc">Consumo do Veículo (km/L)</label>
-        <input type="number" id="consumoFinanc" placeholder="Litros" step="0.1">
+        <input type="text" id="consumoFinanc" placeholder="Litros" step="0.1" oninput="formatarMoeda(this)">
       </div>
       <div>
         <label for="dias">Dias Trabalhados</label>
-        <input type="number" id="diasTrabalhadosFinan" placeholder="Dias">
+        <input type="text" id="diasTrabalhadosFinan" placeholder="Dias">
       </div>
       <div>
         <label for="lucroFinanc">Valor desejado de lucro (R$)</label>
-        <input type="number" id="lucroFinanc" placeholder="R$">
+        <input type="text" id="lucroFinanc" placeholder="R$" oninput="formatarMoeda(this)">
       </div>
     </div>
 
@@ -209,34 +183,9 @@
     <h2>Carro Quitado</h2>
 
     <div class="form-group">
-      <!-- <div>
-        <label for="distanciaQuit">Distância (km)</label>
-        <input type="number" id="distanciaQuit" placeholder="Km">
-      </div>
-       <div>
-        <label for="precoGasolinaQuit">Preço da Gasolina (R$/L)</label>
-        <input type="number" id="precoGasolinaQuit" placeholder="R$" step="0.01">
-      </div>
-      
-      <div>
-        <label for="manutencaoKm">Manutenção (R$/km)</label>
-        <input type="number" id="manutencaoKm" placeholder="Ex.: 0.35" step="0.01">
-      </div>
-      <div>
-        <label for="lucroQuit">Valor desejado de lucro (R$)</label>
-        <input type="number" id="lucroQuit" placeholder="R$">
-      </div>
-      <div>
-        <label for="manutPrev">Manutenção Preventiva (R$)</label>
-        <input type="number" id="manutPrev" placeholder="R$">
-      </div> -->
-      <!-- <div>
-        <label for="parcelaMensal">Valor da Parcela (R$)</label>
-        <input type="number" id="parcelaMensal" placeholder="R$">
-      </div> -->
       <div>
         <label for="kmRodadosQuit">Quilometros Rodados no Mês</label>
-        <input type="number" id="kmRodadosQuit" placeholder="Km">
+        <input type="text" id="kmRodadosQuit" placeholder="Km">
       </div>
       <div>
         <label for="tipoCombustivelQuit">Tipo de Combustível</label>
@@ -250,19 +199,19 @@
       </div>
       <div>
         <label for="precoCombustivelQuit">Preço do Combustível(R$/L)</label>
-        <input type="number" id="precoCombustivelQuit" placeholder="R$" step="0.01">
+        <input type="text" id="precoCombustivelQuit" placeholder="R$" step="0.01" oninput="formatarMoeda(this)">
       </div>
       <div>
         <label for="consumoQuit">Consumo do Veículo (km/L)</label>
-        <input type="number" id="consumoQuit" placeholder="Litros" step="0.1">
+        <input type="text" id="consumoQuit" placeholder="Litros" step="0.1">
       </div>
       <div>
         <label for="dias">Dias Trabalhados</label>
-        <input type="number" id="diasTrabalhadosQuit" placeholder="Dias">
+        <input type="text" id="diasTrabalhadosQuit" placeholder="Dias">
       </div>
       <div>
         <label for="lucroQuit">Valor desejado de lucro (R$)</label>
-        <input type="number" id="lucroQuit" placeholder="R$">
+        <input type="text" id="lucroQuit" placeholder="R$" oninput="formatarMoeda(this)">
       </div>
     </div>
 
@@ -284,31 +233,9 @@
     <h2>Viagem de Carro</h2>
 
     <div class="form-group">
-      <!-- <div>
-        <label for="distanciaVia">Distância (km)</label>
-        <input type="number" id="distanciaVia" placeholder="Ex.: 800">
-      </div>
-      <div>
-        <label for="precoGasolinaVia">Preço da Gasolina (R$/L)</label>
-        <input type="number" id="precoGasolinaVia" placeholder="Ex.: 5.80" step="0.01">
-      </div>
-      
-      <div>
-        <label for="pedagios">Pedágios Totais (R$)</label>
-        <input type="number" id="pedagios" placeholder="Ex.: 120">
-      </div>
-      <div>
-        <label for="outrosCustos">Outros Custos (R$)</label>
-        <input type="number" id="outrosCustos" placeholder="Ex.: 80">
-      </div>
-      <div>
-        <label for="lucroVia">Valor desejado de lucro (R$)</label>
-        <input type="number" id="lucroVia" placeholder="R$">
-      </div> -->
-
       <div>
         <label for="kmRodadosVia">Distância da Viagem (km)</label>
-        <input type="number" id="kmRodadosVia" placeholder="Km">
+        <input type="text" id="kmRodadosVia" placeholder="Km">
       </div>
       <div>
         <label for="tipoCombustivelVia">Tipo de Combustível</label>
@@ -322,15 +249,15 @@
       </div>
       <div>
         <label for="precoCombustivelVia">Preço do Combustível (R$/L)</label>
-        <input type="number" id="precoCombustivelVia" placeholder="R$" step="0.01">
+        <input type="text" id="precoCombustivelVia" placeholder="R$" step="0.01" oninput="formatarMoeda(this)">
       </div>
       <div>
         <label for="consumoVia">Consumo do Carro (km/L)</label>
-        <input type="number" id="consumoVia" placeholder="km/L" step="0.1">
+        <input type="text" id="consumoVia" placeholder="km/L" step="0.1">
       </div>
       <div>
         <label for="tarifasVia">Custos com Pedágios (R$)</label>
-        <input type="number" id="tarifasVia" placeholder="R$" step="0.1">
+        <input type="text" id="tarifasVia" placeholder="R$" step="0.1" oninput="formatarMoeda(this)">
       </div>
 
     </div>
