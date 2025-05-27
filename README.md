@@ -1,37 +1,38 @@
-# Calculadora de Custos
+# KM-MX – Calculadora de Quilometragem para Motoristas
 
-Este é um projeto de uma **Calculadora de Custos** desenvolvida em HTML, CSS e JavaScript. A aplicação permite calcular os custos de uma viagem considerando diferentes fatores, como distância, preço da gasolina, consumo do carro, aluguel diário e tarifas de aplicativos de transporte como Uber/99.
+**KM-MX** é uma aplicação web que ajuda motoristas de aplicativos ou particulares a descobrir rapidamente o custo por quilômetro e a tarifa mínima que precisam cobrar para atingir uma meta de lucro em quatro cenários diferentes (aluguel, financiamento, carro quitado e viagens). A ferramenta também gera um resumo formatado e pronto para ser compartilhado no WhatsApp.
 
-## 📋 Funcionalidades
+---
 
-- **Cálculo de custos com gasolina**: Baseado na distância, preço da gasolina e consumo do carro.
-- **Cálculo de custos com aluguel de carro**: Considerando o valor diário do aluguel e o número de dias.
-- **Cálculo de custos com aplicativos de transporte**: Baseado na tarifa por quilômetro.
+## ✨ Funcionalidades
 
-## 🚀 Tecnologias Utilizadas
+- **Quatro calculadoras independentes**:  
+  `Carro Alugado`, `Carro Financiado`, `Carro Quitado` e `Viagem de Carro`, cada uma com seus próprios campos e lógica de cálculo.
+- **Formato de moeda e números**: entrada de valores com máscara `R$` e vírgula como separador decimal.
+- **Meta diária e por quilômetro**: exibe automaticamente a tarifa mínima e a meta de faturamento por dia.
+- **Botão “Enviar via WhatsApp”**: copia todos os resultados em formato de lista para o WhatsApp com um clique.
+- **Interface responsiva**: grade CSS e design fluido que funcionam bem em telas de celular, tablets e desktop.
+- **Navegação simplificada**: tela inicial com ícones, barra de navegação superior e botão de retorno à tela principal.
 
-- **HTML5**: Estrutura do projeto.
-- **CSS3**: Estilização e animações.
-- **JavaScript**: Lógica para os cálculos.
+---
 
-## 📐 Fórmulas Utilizadas
+## 🛠️ Tecnologias e Bibliotecas
 
-1. **Custo com Gasolina**  
-   `Custo Gasolina = (Distância em km / Consumo em km/L) × Preço do combustível (R$/L)`
+| Camada | Tecnologias Utilizadas |
+| ------ | ---------------------- |
+| **Frontend** | HTML5 semântico, CSS3 (Flexbox + Grid), JavaScript ES6 |
+| **Ícones** | [Font Awesome 6](https://fontawesome.com) |
+| **Fonte** | Google Fonts — Inter |
+| **Compartilhamento** | API Web `window.open` para WhatsApp |
 
-2. **Custos de Aluguel/Financiamento**  
-   `Custo Aluguel/Financiamento = Aluguel/Financiamento Mensal (R$)`
+---
 
-3. **Custo Total com Carro**  
-   `Custo Total Carro = Custo Gasolina + Custo Aluguel/Financiamento`
+## 📁 Estrutura do Projeto
 
-## 📂 Estrutura do Projeto
-
-```plaintext
-projeto_8sem/
-├── index.html       # Arquivo principal da aplicação
-├── styles.css       # Estilos e animações
-├── scripts.js       # Lógica dos cálculos
-├── images/          # Ícone
-└── README.md        # Documentação do projeto
-```
+```text
+km-mx/
+├── index.html      # Estrutura e navegação principais
+├── styles.css      # Estilos, responsividade, animações
+├── scripts.js      # Lógica dos cálculos, formatação e interações
+├── images/         # Logos, ícones customizados, capturas de tela
+└── README.md
