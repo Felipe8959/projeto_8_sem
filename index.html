@@ -21,6 +21,7 @@
     <button onclick="selectOption('calcAluguel')">Alugado</button>
     <button onclick="selectOption('calcFinanciado')">Financiado</button>
     <button onclick="selectOption('calcQuitado')">Quitado</button>
+    <button onclick="selectOption('calcViagem')">Viagem</button>
   </nav>
 
   <!-- TELA DE SELEÇÃO -->
@@ -238,7 +239,6 @@
         <label for="tarifasVia">Custos com Pedágios (R$)</label>
         <input type="text" id="tarifasVia" placeholder="R$" step="0.1" oninput="formatarMoeda(this)">
       </div>
-
     </div>
 
     <button onclick="calcular()" class="btn_calc">Calcular</button>
